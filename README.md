@@ -53,10 +53,10 @@ All results were stored in annotated CSV files for training and evaluation.
 
 | Agent | Role | Input | Output |
 |-------|------|-------|--------|
-| **Agent 1** | Dialectal Analysis | Prompt | Detected dialect + confidence |
-| **Agent 2** | Context Manipulation Detection | Prompt | Severity score (0–5) + Action |
-| **Agent 3** | Response Monitoring | Prompt + Output | Subcategory, Main category, confidence |
-| **Agent 4** | Decision Fusion | All agent results | Final system decision (Safe / Rephrase / Block) |
+| **Agent 1**  | Dialectal Analysis | Prompt | Detected dialect + confidence |
+| **Agent 2**  | Context Manipulation Detection | Prompt | Severity score (0–5) + Action |
+| **Agent 3**  | Response Monitoring | Prompt + Output | Subcategory, Main category, confidence |
+| **Agent 4**  | Decision Fusion | All agent results | Final system decision (Safe / Rephrase / Block) |
 
 ## Techniques Used
 - Fine-tuned `camelbert` (from CAMeL Lab) for dialect classification - Agent 1
