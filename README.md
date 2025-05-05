@@ -72,7 +72,7 @@ Our system includes a simple UI for researchers and testers:
 - See dialect and manipulation scores
 - Evaluate output behavior
 - View final MAS decision
-![Uploading Screenshot 2025-05-04 at 2.43.11 PM.png…]()
+<img width="1498" alt="Screenshot 2025-05-04 at 2 43 11 PM" src="https://github.com/user-attachments/assets/b6045c17-705d-4710-9764-e1e3edee22e4" />
 
 
 
