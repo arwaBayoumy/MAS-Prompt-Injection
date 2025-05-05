@@ -1,4 +1,5 @@
 # Arabic LLMs Prompt Injection Attacks – A Case Study on GPT, Jais, and Multi-Agent Defense System
+*Amr Hamza*, *Arwa Bayoumy*, *Farah Hammam*, *Yassin Abdelmeguid*
 
 This repository implements a Multi-Agent System (MAS) designed to defend Arabic Large Language Models (LLMs) against prompt injection attacks. Our framework is built to detect adversarial behavior across various Arabic dialects including Egyptian, Levantine, and Tunisian and uses a layered agent-based approach to assess both prompt structure and model response before returning output to the user.
 
