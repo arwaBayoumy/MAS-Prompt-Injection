@@ -49,6 +49,7 @@ All results were stored in annotated CSV files for training and evaluation.
 
 ## MAS System Overview
 
+![Screenshot 2025-05-05 110752](https://github.com/user-attachments/assets/d4ac6b43-d358-4d0c-bb58-027fdf656d21)
 
 | Agent | Role | Input | Output |
 |-------|------|-------|--------|
@@ -57,24 +58,27 @@ All results were stored in annotated CSV files for training and evaluation.
 | **Agent 3** | Response Monitoring | Prompt + Output | Subcategory, Main category, confidence |
 | **Agent 4** | Decision Fusion | All agent results | Final system decision (Safe / Rephrase / Block) |
 
+## Techniques Used
+- Fine-tuned `camelbert` (from CAMeL Lab) for dialect classification - Agent 1
+- Heuristic Decision-Making + Bellman equation for risk scoring - Agent 2
+- TF-IDF vectorization + Naive Bayes classifier for response safety classification - Agent 3
+- Flask backend for interactive testing
+
 ---
 
 ## Flask-Based UI
-
 Our system includes a simple UI for researchers and testers:
 - Submit prompts in Arabic (or Arabizi)
 - See dialect and manipulation scores
 - Evaluate output behavior
 - View final MAS decision
+![Uploading Screenshot 2025-05-04 at 2.43.11 PM.png…]()
+
+
 
 ---
 
-## Techniques Used
 
-- Fine-tuned `camelbert` (from CAMeL Lab) for dialect classification - Agent 1
-- Heuristic Decision-Making + Bellman equation for risk scoring - Agent 2
-- TF-IDF vectorization + Naive Bayes classifier for response safety classification - Agent 3
-- Flask backend for interactive testing
 
 ---
 
