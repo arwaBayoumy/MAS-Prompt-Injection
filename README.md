@@ -20,13 +20,13 @@ The MAS performs multi-stage analysis using specialized agents for dialect detec
 
 Due to the lack of adversarial Arabic datasets, we curated our own:
 
-###  Source & Categories
+**Source & Categories**
 - We selected 15 prompts from the **AdvBench** dataset (Zou et al., 2023) and expanded them into 45 categorized prompts across:
   1. **Instruction Manipulation**
   2. **Obfuscation (Syntactic Variation)**
   3. **User-driven Injections (Indirect)**
 
-### Dialect Translation
+**Dialect Translation**
 Each of the 45 prompts was translated into:
 - **Egyptian Arabic**
 - **Levantine Arabic**
@@ -60,7 +60,7 @@ All results were stored in annotated CSV files for training and evaluation.
 | **Agent 4** |  Decision Fusion | All agent results | Final system decision (Safe / Rephrase / Block) |
 
 
-## Techniques Used
+**Techniques Used**
 - Fine-tuned `camelbert` (from CAMeL Lab) for dialect classification - Agent 1
 - Heuristic Decision-Making + Bellman equation for risk scoring - Agent 2
   - **Agent 2.0 (MDP)**: Bellman equation + prefix scoring using dynamic transition matrix
@@ -68,9 +68,8 @@ All results were stored in annotated CSV files for training and evaluation.
 - TF-IDF vectorization + Naive Bayes classifier for response safety classification - Agent 3
 - Flask backend for interactive testing
 
----
 
-## Flask-Based UI
+**Flask-Based UI**
 Our system includes a simple UI for researchers and testers:
 - Submit prompts in Arabic (or Arabizi)
 - See dialect and manipulation scores
