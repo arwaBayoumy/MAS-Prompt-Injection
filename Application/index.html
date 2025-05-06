@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Injection Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            background-image: url('/static/wallpaper.png'); /* Reference image in the static folder */
+            background-size: cover; /* Make the background cover the entire screen */
+            background-position: center; /* Center the background image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .result h3 {
+            color: #1E3A8A;
+        }
+
+        .result .output-item {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e1f5fe;
+            border-radius: 5px;
+        }
+
+        .result .output-item p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .result .output-item span {
+            font-weight: bold;
+            color: #1E3A8A;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prompt Injection Detection</h1>
+        <form id="input-form">
+            <label for="prompt">Enter Prompt:</label><br>
+            <textarea id="prompt" rows="4" cols="50"></textarea><br>
+            <button type="submit">Analyze</button>
+        </form>
+
+        <!-- Result Section -->
+        <div id="results" class="result">
+            <h3>Results</h3>
+            <div id="final-risk-score" class="output-item">
+                <p><span>Final Risk Score:</span> <span id="final-risk-value"></span></p>
+            </div>
+            <div id="dialect-result" class="output-item">
+                <p><span>Dialect Result:</span> <span id="dialect-value"></span></p>
+            </div>
+            <div id="decision" class="output-item">
+                <p><span>Decision:</span> <span id="decision-value"></span></p>
+            </div>
+            <!-- Display Model Output if Prompt is Safe -->
+            <div id="model-output-container" class="output-item" style="display: none;">
+                <p><span>Model Output:</span> <span id="model-output-value"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('input-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get the prompt value from the input box
+            var prompt = document.getElementById('prompt').value;
+
+            // Send POST request to the Flask server
+            fetch('/process', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ prompt: prompt })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert("Error: " + data.error);
+                } else {
+                    // Display the results
+                    var resultDiv = document.getElementById('results');
+                    resultDiv.style.display = 'block';
+
+                    // Update the displayed values
+                    document.getElementById('final-risk-value').textContent = (data.final_risk_score * 100).toFixed(2) + '%';
+                    document.getElementById('dialect-value').textContent = data.dialect_result || 'N/A';
+                    document.getElementById('decision-value').textContent = data.decision || 'N/A';
+
+                    // If the decision is "Prompt Safe", display the model output
+                    var modelOutputContainer = document.getElementById('model-output-container');
+                    if (data.decision === "Prompt Safe") {
+                        modelOutputContainer.style.display = 'block';
+                        // Use innerHTML to display the model output with formatting
+                        document.getElementById('model-output-value').innerHTML = data.model_output || 'No output available';
+                    } else {
+                        modelOutputContainer.style.display = 'none';
+                    }
+                }
+            })
+            .catch(error => {
+                alert("Error: " + error);
+            });
+        });
+    </script>
+</body>
+</html>
