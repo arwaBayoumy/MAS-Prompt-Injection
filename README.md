@@ -146,7 +146,7 @@ Run the real-time MAS evaluation app (make sure Flask is installed):
 
 **App location:**  
 ```bash
-app/app.py
+Application/app.py
 ```
 
 **Run the app:**  
