@@ -69,7 +69,7 @@ All results were stored in annotated CSV files for training and evaluation.
 - Flask backend for interactive testing
 
 
-**Flask-Based UI**
+## Flask-Based UI
 Our system includes a simple UI for researchers and testers:
 - Submit prompts in Arabic (or Arabizi)
 - See dialect and manipulation scores
@@ -134,14 +134,12 @@ python Test_MAS_GameTheory.py
 - Returns manipulation score and optimal action  
 - Outputs evaluation summaries and final MAS decisions  
 
----
-
-### Inputs & Outputs
+ **Inputs & Outputs**
 
 Both testing scripts use the same evaluation dataset:
 - **Input file:** `Results.xlsx` (containing prompt, model output, labels)
 - **Output:** printed risk scores, decisions, and classification metrics
-
+--- 
 ### Testing the Full Flask App (Real-Time MAS UI)
 
 Run the real-time MAS evaluation app (make sure Flask is installed):
