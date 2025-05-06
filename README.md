@@ -161,6 +161,9 @@ python app.py
 - Web interface powered by Flask  
 
 ---
+You are also welcome to reach out through email (b00084636@alumni.aus.edu - Amr Hamza, g00082596@alumni.aus.edu - Arwa Bayoumy, or g00082666@alumni.aus.edu - Farah Hammam)
+
+---
 
 
 
